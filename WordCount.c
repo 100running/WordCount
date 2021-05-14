@@ -1,32 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
-int main(int argc, char *argv[]) {//argc ±íÊ¾ÃüÁîĞĞÊäÈë²ÎÊıµÄ¸öÊı£¨ÒÔ¿Õ°×·û·Ö¸ô£©£»µÚ¶ş¸ö²ÎÊı£ºargv[0]Ä¬ÈÏÊÇ¿ÉÖ´ĞĞÎÄ¼ş±¾Éí£¬argv[1]¡¢argv[2]ÊÇ½ÓÊÜµ½µÄ²ÎÊı
+int main(int argc, char *argv[]) {//argc è¡¨ç¤ºå‘½ä»¤è¡Œè¾“å…¥å‚æ•°çš„ä¸ªæ•°ï¼ˆä»¥ç©ºç™½ç¬¦åˆ†éš”ï¼‰ï¼›ç¬¬äºŒä¸ªå‚æ•°ï¼šargv[0]é»˜è®¤æ˜¯å¯æ‰§è¡Œæ–‡ä»¶æœ¬èº«ï¼Œargv[1]ã€argv[2]æ˜¯æ¥å—åˆ°çš„å‚æ•°
 
-	if( argc == 3 ) {//±íÊ¾main½ÓÊÜµ½ÁËÈı¸ö²ÎÊı¡£ 
+	if( argc == 3 ) {//è¡¨ç¤ºmainæ¥å—åˆ°äº†ä¸‰ä¸ªå‚æ•°ã€‚ 
 
-		//³¢ÊÔ¶ÁÈ¡ÎÄ¼şµÄÄÚÈİ
+		//å°è¯•è¯»å–æ–‡ä»¶çš„å†…å®¹
 		char data;
-		FILE *fp = fopen(argv[2],"r");//argv[2]Õâ¸ö²ÎÊı¾ÍÊÇÒª¶ÁÈ¡µÄÎÄ¼şÃû,ÎÒµÄ²âÊÔÎÄ¼şÃû³ÆÎª input.TXT 
+		FILE *fp = fopen(argv[2],"r");//argv[2]è¿™ä¸ªå‚æ•°å°±æ˜¯è¦è¯»å–çš„æ–‡ä»¶å,æˆ‘çš„æµ‹è¯•æ–‡ä»¶åç§°ä¸º input.TXT 
 
-		if(!fp) {  //²âÊÔÎÄ¼şÎª¿Õ 
-			printf("´íÎó£ºÎÄ¼ş¶ÁÈ¡Ê§°Ü\n");
+		if(!fp) {  //æµ‹è¯•æ–‡ä»¶ä¸ºç©º 
+			printf("é”™è¯¯ï¼šæ–‡ä»¶è¯»å–å¤±è´¥\n");
 			return -1;
 		}
 
-		//¶Ô²ÎÊı½øĞĞÅĞ¶Ï
-		if( !strcmp(argv[1],"-c") ) { //Èç¹ûµÚ¶ş¸ö²ÎÊıargv[1]=="-c"£¬ÔòÍ³¼Æ×Ö·ûÊı
-			char temp; 				//±íÊ¾µ±Ç°×Ö·û 
-			int bitnum = 0;			//×Ö·ûÊı 
-			temp = fgetc(fp);		// fgetcÒâÎª´ÓÎÄ¼şÖ¸ÕëstreamÖ¸ÏòµÄÎÄ¼şÖĞ¶ÁÈ¡Ò»¸ö×Ö·û£¬¶ÁÈ¡Ò»¸ö×Ö½Úºó£¬¹â±êÎ»ÖÃºóÒÆÒ»¸ö×Ö½Ú 
+		//å¯¹å‚æ•°è¿›è¡Œåˆ¤æ–­
+		if( !strcmp(argv[1],"-c") ) { //å¦‚æœç¬¬äºŒä¸ªå‚æ•°argv[1]=="-c"ï¼Œåˆ™ç»Ÿè®¡å­—ç¬¦æ•°
+			char temp; 				//è¡¨ç¤ºå½“å‰å­—ç¬¦ 
+			int bitnum = 0;			//å­—ç¬¦æ•° 
+			temp = fgetc(fp);		// fgetcæ„ä¸ºä»æ–‡ä»¶æŒ‡é’ˆstreamæŒ‡å‘çš„æ–‡ä»¶ä¸­è¯»å–ä¸€ä¸ªå­—ç¬¦ï¼Œè¯»å–ä¸€ä¸ªå­—èŠ‚åï¼Œå…‰æ ‡ä½ç½®åç§»ä¸€ä¸ªå­—èŠ‚ 
 			while( temp != EOF ) {
 				temp = fgetc(fp);
 				bitnum++;
 			}
-			printf("×Ö·ûÊıÎª£º%d\n",bitnum);
+			printf("å­—ç¬¦æ•°ä¸ºï¼š%d\n",bitnum);
 
-		} else if( !strcmp(argv[1],"-w") ) { //Èç¹ûµÚ¶ş¸ö²ÎÊıargv[1]=="-w"£¬ÔòÍ³¼Æµ¥´ÊÊı
-			int wordnum = 0;				//µ¥´ÊÊıÄ¿ 
-			char temp = fgetc(fp); 			//µ±Ç°×Ö·û£¬Öğ¸öÍùºóÒÆ 
+		} else if( !strcmp(argv[1],"-w") ) { //å¦‚æœç¬¬äºŒä¸ªå‚æ•°argv[1]=="-w"ï¼Œåˆ™ç»Ÿè®¡å•è¯æ•°
+			int wordnum = 0;				//å•è¯æ•°ç›® 
+			char temp = fgetc(fp); 			//å½“å‰å­—ç¬¦ï¼Œé€ä¸ªå¾€åç§» 
 			while( temp != EOF) {
 				if( (temp >='a' && temp <='z') || ( temp >='A' && temp <='Z')) {
 					while( (temp >='a' && temp <='z') || ( temp >='A' && temp <='Z'))
@@ -38,18 +38,18 @@ int main(int argc, char *argv[]) {//argc ±íÊ¾ÃüÁîĞĞÊäÈë²ÎÊıµÄ¸öÊı£¨ÒÔ¿Õ°×·û·Ö¸ô£
 					temp =fgetc(fp);
 				}	
 			}
-			printf("µ¥´ÊÊıÎª£º%d\n",wordnum);
+			printf("å•è¯æ•°ä¸ºï¼š%d\n",wordnum);
 		} 
-		else { 						 //µ±ÊäÈë³ı-c¡¢-w¡¢Ö®ÍâµÄ²ÎÊı 
-			printf("´íÎó£º²ÎÊı³¬³ö·¶Î§£¡\n");
-			printf("ÔÊĞí²ÎÊı£º-c£¬-w \n");
+		else { 						 //å½“è¾“å…¥é™¤-cã€-wã€ä¹‹å¤–çš„å‚æ•° 
+			printf("é”™è¯¯ï¼šå‚æ•°è¶…å‡ºèŒƒå›´ï¼\n");
+			printf("å…è®¸å‚æ•°ï¼š-cï¼Œ-w \n");
 		}
 		int n=fclose(fp);
 	} 
-	else { 						//µ±²ÎÊı¸öÊı²»Îª3£¬ÌáÊ¾´íÎóĞÅÏ¢£¬²¢ÌáÊ¾ÊäÈëµÄÕıÈ·¸ñÊ½¡£ 
-		printf("´íÎó£ºÔËĞĞ²ÎÊı±ØĞëÒª3¸ö\n");
-		printf("ÓÃ·¨£ºWordCount.exe [parameter] [file_name]\n");// [parameter]Îª¡°-c¡±»òÕß¡°-w¡±£¬[file_name]Îª²âÊÔµÄÎÄ¼şÃû
-		/*²âÊÔÓÃÀı
+	else { 						//å½“å‚æ•°ä¸ªæ•°ä¸ä¸º3ï¼Œæç¤ºé”™è¯¯ä¿¡æ¯ï¼Œå¹¶æç¤ºè¾“å…¥çš„æ­£ç¡®æ ¼å¼ã€‚ 
+		printf("é”™è¯¯ï¼šè¿è¡Œå‚æ•°å¿…é¡»è¦3ä¸ª\n");
+		printf("ç”¨æ³•ï¼šWordCount.exe [parameter] [file_name]\n");// [parameter]ä¸ºâ€œ-câ€æˆ–è€…â€œ-wâ€ï¼Œ[file_name]ä¸ºæµ‹è¯•çš„æ–‡ä»¶å
+		/*æµ‹è¯•ç”¨ä¾‹
 		WordCount.exe -c input.TXT 
 		*/ 
 	}
@@ -57,56 +57,3 @@ int main(int argc, char *argv[]) {//argc ±íÊ¾ÃüÁîĞĞÊäÈë²ÎÊıµÄ¸öÊı£¨ÒÔ¿Õ°×·û·Ö¸ô£
 	return 0;
 }
 
-//
-//#include<stdio.h>
-//#include<stdlib.h>
-//#include<string.h>
-//#include<windows.h>
-////#define IN 1
-////#define OUT 0
-//void main()
-//{
-//    FILE *fp;
-//    int length;
-//    fp = fopen("input.TXT", "r");//´ò¿ªÒª¼ÆÊıµÄÎÄ¼ş
-//    if (fp == NULL)
-//	{
-//
-//        printf("can not open file");
-//        exit(0);
-//	}
-//        fseek(fp, 00, SEEK_END);
-//        length = ftell(fp);
-//        printf("%d\n", length);//È·¶¨ËùÒª²éÕÒµÄÎÄ¼şÖĞ×Ü×Ö·ûÊı³¤¶È£¬²¢ÔÚÆÁÄ»ÖĞÏÔÊ¾³öÀ´
-//        rewind(fp);
-//        char str[100000], c;
-//        fread(str, sizeof(char), length, fp);//´ÓÎÄ¼şÖĞ¶ÁÈ¡ËùÓĞµÄ×Ö·ûµ½strĞòÁĞ
-//        int i, num1 = 0, num2 = 0, num3, num4=0, word = 0;
-//        for (i = 0; (c = str[i]) != '\0'; i++)
-//		{
-//
-//            if (c == ' ')//ÅĞ¶Ï×Ö·ûÖĞµ¥´ÊÊı
-//			{
-//                  num2++;
-//                  word = 0;
-//			}
-//            else
-//			{
-//                  if (word == 0)
-//				  {
-//                        word = 1;
-//                        num1++;
-//				  }
-//			}
-//            if ((c = str[i]) == '\n')
-//			{
-//                  num4++;
-//			}
-//		}
-//        num3 = length - num2-num4*2;//×Ö·ûÊı
-//        num4++;//ĞĞÊı
-//        fclose(fp);
-//        printf("¿Õ¸ñÊıÎª%d\n", num2);
-//        printf("µ¥´ÊÊıÎª%d\nĞĞÊıÎª%d\n×Ö·ûÊıÎª%d\n", num1, num4, num3);
-//        system("pause");
-//}
